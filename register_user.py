@@ -11,8 +11,15 @@ while op != 4:
     op = int(input("Informe a opção desejada: "))
     if op == 1:
         chave = input("\nEm qual campo deseja inserir dados? ")
-        valor = input(f"Qual é o dado que deseja incluir no campo {chave}? ")
-        ficha.update({chave:valor})
+        if chave in ficha.keys():
+            print(f"{chave} -> {ficha.get(chave)}")
+            update_chave = input("Você deseja alterar o valor? (S/N)")
+            if update_chave == "S":
+                valor = input(f"Qual é o novo valor para o campo {chave}? ")
+                ficha.update({chave:valor})
+            else: 
+                valor = input(f"Qual é o dado que deseja incluir no campo {chave}? ")
+                ficha.update({chave:valor})
     elif op == 2:
         print(f"\nOs campos disponíveis na ficha são: {ficha.keys()}")
         chave = input("Você deseja obter dados de qual campo? ")
